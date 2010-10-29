@@ -11,5 +11,7 @@
 </p>
 
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<% if current_user %>
+<%= link_to 'Edit', edit_user_profile_path %> |
+<%= link_to 'Back', user_profile_path %>
+<% end %>

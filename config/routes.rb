@@ -1,9 +1,12 @@
 Foto::Application.routes.draw do
-  resources :profiles
 
   get "welcome/index"
-
-  devise_for :users
+  get "profile" => "profiles#user_profile", :as => :user_profile
+  get "profile/edit" => "profiles#edit", :as => :edit_user_profile
+  resources :profiles
+  
+  #devise_for :users
+  devise_for :users, :controllers => { :users => "users" }
   root :to => "welcome#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
