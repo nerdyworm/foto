@@ -8,6 +8,34 @@ describe PicturesController do
     end
   end
 
+  describe "with authenticated user" do
+    before(:each) do
+      @user = Factory.create(:user)
+      sign_in @user
+    end
+    
+    it "should be able to view the new picture" do
+      pending #tanya  interupted
+    end
+  end
+  
+  describe "without authenticated user" do
+    
+  end
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   describe "GET index" do
     it "assigns all pictures as @pictures" do
       Picture.stub(:all) { [mock_picture] }
