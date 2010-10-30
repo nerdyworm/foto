@@ -2,10 +2,17 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.1'
 
-gem "devise"
-
+#database, heroku defaults
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
+#authentication
+gem "devise"
+
+#uploads
+gem 'paperclip'
+gem 'aws-s3'
+
+#testing gems
 group :development, :test do
   gem "capybara"
   gem "steak",        ">= 1.0.0.rc.1"

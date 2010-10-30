@@ -1,9 +1,12 @@
 Foto::Application.routes.draw do
 
+  resources :pictures
+
   get "welcome/index"
-  get "profile" => "profiles#user_profile", :as => :user_profile
-  get "profile/edit" => "profiles#edit", :as => :edit_user_profile
-  resources :profiles
+  get "profile"       => "profiles#user_profile", :as => :user_profile
+  get "profile/edit"  => "profiles#edit",         :as => :edit_user_profile
+  put "profile"       => "profiles#update"
+  
   
   #devise_for :users
   devise_for :users, :controllers => { :users => "users" }
