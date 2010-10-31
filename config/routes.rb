@@ -5,11 +5,12 @@ Foto::Application.routes.draw do
   get "welcome/index"
   get "profile"       => "profiles#user_profile", :as => :user_profile
   get "profile/edit"  => "profiles#edit",         :as => :edit_user_profile
+  get "profiles/:id"  => "profiles#show"
   put "profile"       => "profiles#update"
   
   
   #devise_for :users
-  devise_for :users, :controllers => { :users => "users" }
+  devise_for :users
   root :to => "welcome#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
