@@ -3,7 +3,7 @@
 <head>
   <title>Foto</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "jquery.min", "rails", "application" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -26,6 +26,13 @@
 		<% end %>
 	</div>
 </div>
+
+<% if flash[:alert] %>
+<div id="alert">
+	<%= flash[:alert] %>
+</div>
+<% end %>
+
 <%= yield %>
 
 </body>

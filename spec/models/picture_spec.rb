@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Picture do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should belong to a user" do
+    picture = Picture.new
+    picture.should respond_to :user
+  end
 end

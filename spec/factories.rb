@@ -19,3 +19,8 @@ Factory.define :user do |f|
   #  admin true
   #end
 end
+
+Factory.define :picture do |f|
+  f.name "picture name"
+  f.tags "cookies, monster, duck"
+end
