@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.4.0)
     abstract (1.0.0)
     actionmailer (3.0.1)
       actionpack (= 3.0.1)
@@ -30,6 +31,9 @@ GEM
     activesupport (3.0.1)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    autotest (4.4.1)
+    autotest-rails (4.1.0)
+      ZenTest
     aws-s3 (0.6.2)
       builder
       mime-types
@@ -110,6 +114,7 @@ GEM
       ffi (~> 0.6.3)
       json_pure
       rubyzip
+    spork (0.8.4)
     sqlite3-ruby (1.3.1)
     steak (1.0.0.rc.1)
       rspec
@@ -127,6 +132,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest
+  autotest-rails
   aws-s3
   capybara
   devise
@@ -134,5 +141,6 @@ DEPENDENCIES
   paperclip
   rails (= 3.0.1)
   rspec-rails (>= 2.0.1)
+  spork (>= 0.8.4)
   sqlite3-ruby
   steak (>= 1.0.0.rc.1)

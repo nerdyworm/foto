@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   has_one :profile
   
   after_create :create_profile
+
+  def can_edit?(editable)
+    editable && editable.user_id == self.id
+  end
 end

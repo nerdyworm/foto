@@ -20,9 +20,12 @@ group :development, :test do
   gem "factory_girl_rails"
 end
 
-
-
-
+group :test do
+  gem 'spork', '>= 0.8.4'
+end
+  
+gem 'autotest'
+gem 'autotest-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'

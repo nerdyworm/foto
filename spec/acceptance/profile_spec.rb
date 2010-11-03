@@ -6,5 +6,4 @@ feature "Profile" do
     visit "/profile"
   end
   
-  
 end

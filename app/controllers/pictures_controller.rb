@@ -5,6 +5,7 @@ class PicturesController < ApplicationController
  
   def index
     @pictures = Picture.all
+    puts "hello world"
   end
 
   def show
