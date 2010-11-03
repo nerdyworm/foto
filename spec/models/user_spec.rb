@@ -37,8 +37,15 @@ describe User do
         user.should respond_to(:can_edit?)
       end
       
-      it "should return false if passed nil" do     user = User.new
+      it "should be false if passed nil" do     user = User.new
         user.can_edit?(nil).should == false 
+      end
+
+      it "should be false if user down not own the editable" do
+        user = Factory.create(:user)
+        editable = mock "Editable"
+        editable.should_receive(:user_id).and_return(-1)
+        user.can_edit?(editable).should == false
       end
       
       it "should be true if user owns the editable" do

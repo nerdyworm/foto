@@ -1,11 +1,14 @@
 class PicturesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show]
-  before_filter :find_picture_by_id, :only => [:show, :edit, :update, :destroy]
-  before_filter :authenticate_ownership!, :only => [:edit, :update, :destroy]
+  before_filter :authenticate_user!,      :except => [:show, :index]
+  before_filter :find_picture_by_id,      :only   => [:show, :edit, :update, :destroy]
+  before_filter :authenticate_ownership!, :only   => [:edit, :update, :destroy]
  
   def index
-    @pictures = Picture.all
-    puts "hello world"
+    if params[:user_id]
+      @pictures = Picture.user(params[:user_id]).public
+    end
+
+    @pictures ||=[]
   end
 
   def show

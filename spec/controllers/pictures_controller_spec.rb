@@ -41,8 +41,20 @@ describe PicturesController do
       put :update, :id => not_mine.id, :picture => {:name => "new name"}
       response.should redirect_to(user_profile_path)
     end
-    
-    
+  end
+
+  describe "with user_id paramter" do
+    it "should list all the user_id's public pictures" do
+      user = Factory.create(:user)
+      mine = Factory.create(:picture, :user_id => user.id, :private => false)
+      p_mine = Factory.create(:picture, :user_id => user.id, :private => true)
+      not_mine = Factory.create(:picture, :user_id => user.id + 1)
+
+      get :index, :user_id => user.id
+      assigns(:pictures).should include mine
+      assigns(:pictures).should_not include p_mine
+      assigns(:pictures).should_not include not_mine
+    end
   end
   
   describe "without authenticated user" do
@@ -51,25 +63,24 @@ describe PicturesController do
       response.should be_redirect
     end
     
-    it "should be able to create a new picture" do
+    it "should NOT be able to create a new picture" do
       lambda do
         post :create, :picture => Factory.attributes_for(:picture)
       end.should_not change(Picture, :count).by(1)
     end
     
-    it "should not be able to edit other's pictures" do
+    it "should NOT be able to edit other's pictures" do
       not_mine = Factory.create(:picture, :user => Factory.create(:user))
       
       get :edit, :id => not_mine.id
       response.should be_redirect
     end
     
-    it "should not be able to view private pictures" do
+    it "should NOT be able to view private pictures" do
       private_picture = Factory.create(:picture, :private => true)
       
       get :show, :id => private_picture.id
       response.response_code.should == 404
     end
   end
-
 end
