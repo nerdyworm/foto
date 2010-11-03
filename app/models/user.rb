@@ -7,10 +7,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_one :profile
-  
+  has_many :pictures  
   after_create :create_profile
 
   def can_edit?(editable)
-    editable && editable.user_id == self.id
+    editable && editable.user_id == self.id || self.admin?
   end
 end
