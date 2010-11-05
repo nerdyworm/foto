@@ -2,7 +2,7 @@ class CreatePictures < ActiveRecord::Migration
   def self.up
     create_table :pictures do |t|
       t.string    :name
-      t.string    :tags
+      t.string    :desc
       t.integer   :user_id
       t.boolean   :private, :default => true
       t.string    :pic_file_name

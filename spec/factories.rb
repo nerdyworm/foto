@@ -22,5 +22,8 @@ end
 
 Factory.define :picture do |f|
   f.name "picture name"
-  f.tags "cookies, monster, duck"
+end
+
+Factory.define :tag do |f|
+  f.name "tag"
 end

@@ -10,11 +10,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101030012052) do
+ActiveRecord::Schema.define(:version => 20101105003949) do
 
   create_table "pictures", :force => true do |t|
     t.string   "name"
-    t.string   "tags"
+    t.string   "desc"
     t.integer  "user_id"
     t.boolean  "private",          :default => true
     t.string   "pic_file_name"
@@ -25,9 +25,20 @@ ActiveRecord::Schema.define(:version => 20101030012052) do
     t.datetime "updated_at"
   end
 
+  create_table "pictures_tags", :id => false, :force => true do |t|
+    t.integer "picture_id"
+    t.integer "tag_id"
+  end
+
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
     t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20101030012052) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                               :default => false
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

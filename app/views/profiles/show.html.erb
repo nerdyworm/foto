@@ -1,15 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Username:</b>
-  <%= @profile.username %>
-</p>
-
 <p class="pictures">
 <% @profile.user.pictures.each do |p| %>
-  <%=link_to p.name, p %>
+  <div class="picture">
+    <p class="name">
+      <%= p.name %>
+    </p>
+    <%= link_to image_tag(p.pic(:thumb)), p %>
+    <p class="private">
+      Private? <%= p.private ? "yes" : "no" %>
+    </p>
+  </div>
 <% end %>
 </p>
+
 <% if current_user %>
 <%= link_to 'Edit', edit_user_profile_path %> |
 <%= link_to 'Back', user_profile_path %>

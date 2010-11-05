@@ -5,6 +5,39 @@ describe Picture do
     picture = Picture.new
     picture.should respond_to :user
   end
+  
+  describe "relations" do
+    describe "tags" do
+      it "should respond to tags" do
+        Picture.new.should respond_to :tags
+      end
+
+      it "should do things with tags_s" do
+        cakes   = Factory.create(:tag, :name => "cakes")
+        cookies = Factory.create(:tag, :name => "cookies")
+
+        picture = Factory.create(:picture, :tags_s => "cookies, cakes")
+
+        picture.tags.should include cakes
+        picture.tags.should include cookies
+      end
+
+      it "should only create one tag" do
+        picture = Factory.create(:picture)
+        picture.tags_s = "cookies, cookies"
+        picture.tags.size.should == 1
+      end
+
+      it "should clear exisiting tags when setting with tags_s" do
+        cookies = Factory.create(:tag, :name => "cookies")
+
+        picture = Factory.create(:picture, :tags_s => "cookies")
+        picture.tags_s = ""
+
+        picture.tags.should_not include cookies
+      end
+    end
+  end
 
   describe "class methods" do
     describe "user" do

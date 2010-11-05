@@ -2,7 +2,6 @@ class CreateProfiles < ActiveRecord::Migration
   def self.up
     create_table :profiles do |t|
       t.integer :user_id
-      t.string :username
 
       t.timestamps
     end

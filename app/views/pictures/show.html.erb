@@ -12,7 +12,9 @@
 
 <p>
   <b>Tags:</b>
-  <%= @picture.tags %>
+  <% @picture.tags.each do |t| %>
+    <%= link_to t.name, "/pictures/tags/#{t.name}", :class => "tag" %>
+  <% end %>
 </p>
 
 

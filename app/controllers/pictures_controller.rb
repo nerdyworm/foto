@@ -8,7 +8,7 @@ class PicturesController < ApplicationController
       @pictures = Picture.user(params[:user_id]).public
     end
 
-    @pictures ||= Picture.public.all
+    @pictures ||= Picture.includes(:tags, :user).public.all
   end
 
   def show
@@ -21,8 +21,11 @@ class PicturesController < ApplicationController
   
   def tags
     if params[:tag]
-      @pictures = Picture.public.where("pictures.tags like ?", "%#{params[:tag]}%").all
+      @pictures = Picture.joins(:tags).where(
+        :tags => {:name => params[:tag]})
+        .includes(:tags, :user).all
     end
+
     @pictures ||=[]
 
     render :index
