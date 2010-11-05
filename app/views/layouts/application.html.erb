@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Foto</title>
-  <%= stylesheet_link_tag :all %>
+  <title>notebookdrawings.com</title>
+  <%= stylesheet_link_tag "screen" %>
   <%= javascript_include_tag "jquery.min", "rails", "application" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-<div id="header">
-	<div id="logo">
-		<h1> Logo </h1>
-	</div>
-	<div id="nav">
-		
-	</div>
-	<div id="session">
-		<% if current_user %>
-			<%= link_to "My Profile", user_profile_path %>
-			|
-			<%= link_to "Sign out", destroy_user_session_path %>
-		<% else %>
-			<%= link_to "Sign in", new_user_session_path %>
-			|
-			<%= link_to "Sign up", new_user_registration_path %>
-		<% end %>
-	</div>
-</div>
+  <div id="container">
+    <div id="header">
+      <div id="logo">
+        <h1><%= link_to "Notebook Drawings", root_path %> </h1>
+      </div>
+      <div id="nav">
+        <%= link_to "Pictures", pictures_path %>        
+        
+        <% if current_user %>
+          <%= link_to "My Profile", user_profile_path %>
+          <%= link_to "Sign out", destroy_user_session_path %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path %>
+          <%= link_to "Sign up", new_user_registration_path %>
+        <% end %>
+      
+      </div>
+    </div>
 
-<% if flash[:alert] %>
-<div id="alert">
-	<%= flash[:alert] %>
-</div>
-<% end %>
+    <% if flash[:alert] %>
+    <div id="alert">
+      <%= flash[:alert] %>
+    </div>
+    <% end %>
 
-<%= yield %>
+    <%= yield %>
 
+  </div>
 </body>
 </html>

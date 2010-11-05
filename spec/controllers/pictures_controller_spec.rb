@@ -82,5 +82,16 @@ describe PicturesController do
       get :show, :id => private_picture.id
       response.response_code.should == 404
     end
+
+    it "should be able to view by tag" do
+      tag = "tag"
+      me = Factory.create(:picture, :private => false, :tags => tag)
+      not_me = Factory.create(:picture, :private => false, :tags => "no")
+      
+      get :tags, :tag => tag
+      response.should be_success
+      assigns(:pictures).should include me
+      assigns(:pictures).should_not include not_me 
+    end
   end
 end

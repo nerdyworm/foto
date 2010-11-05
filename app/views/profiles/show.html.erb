@@ -5,7 +5,11 @@
   <%= @profile.username %>
 </p>
 
-
+<p class="pictures">
+<% @profile.user.pictures.each do |p| %>
+  <%=link_to p.name, p %>
+<% end %>
+</p>
 <% if current_user %>
 <%= link_to 'Edit', edit_user_profile_path %> |
 <%= link_to 'Back', user_profile_path %>

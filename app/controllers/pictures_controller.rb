@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_filter :authenticate_user!,      :except => [:show, :index]
+  before_filter :authenticate_user!,      :except => [:show, :index, :tags]
   before_filter :find_picture_by_id,      :only   => [:show, :edit, :update, :destroy]
   before_filter :authenticate_ownership!, :only   => [:edit, :update, :destroy]
  
@@ -8,7 +8,7 @@ class PicturesController < ApplicationController
       @pictures = Picture.user(params[:user_id]).public
     end
 
-    @pictures ||=[]
+    @pictures ||= Picture.public.all
   end
 
   def show
@@ -17,6 +17,15 @@ class PicturesController < ApplicationController
              :file    => "#{Rails.root}/public/404.html",
              :status  => 404 and return
     end
+  end
+  
+  def tags
+    if params[:tag]
+      @pictures = Picture.public.where("pictures.tags like ?", "%#{params[:tag]}%").all
+    end
+    @pictures ||=[]
+
+    render :index
   end
 
   def new

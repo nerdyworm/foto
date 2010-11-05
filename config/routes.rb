@@ -11,7 +11,9 @@ Foto::Application.routes.draw do
   resources :users do
     resources :pictures
   end
+  
   resources :pictures
+  match "/pictures/tags/:tag" => "pictures#tags", :as => :tag
 
   root :to => "welcome#index"
   # The priority is based upon order of creation:
