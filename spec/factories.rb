@@ -22,6 +22,7 @@ end
 
 Factory.define :picture do |f|
   f.name "picture name"
+  f.association :user, :factory => :user
 end
 
 Factory.define :tag do |f|
