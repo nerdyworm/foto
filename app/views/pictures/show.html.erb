@@ -1,22 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Picture:</b>
-  <%= image_tag @picture.pic.url(:thumb) %>
+<h1><%= @picture.name %></h1>
+<p class="full">
+  <%= image_tag @picture.pic.url(:full) %>
 </p>
+<% @picture.tags.each do |t| %>
+  <%= link_to t.name, "/pictures/tags/#{t.name}", :class => "tag" %>
+<% end %>
 
-<p>
-  <b>Name:</b>
-  <%= @picture.name %>
-</p>
-
-<p>
-  <b>Tags:</b>
-  <% @picture.tags.each do |t| %>
-    <%= link_to t.name, "/pictures/tags/#{t.name}", :class => "tag" %>
-  <% end %>
-</p>
-
-
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+<% if current_user && current_user.can_edit?(@picture) %>
+<div class="user-controls">
+  <%= link_to 'Edit', edit_picture_path(@picture) %>
+</div>
+<% end %>

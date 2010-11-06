@@ -8,6 +8,7 @@ Foto::Application.routes.draw do
   get "profiles/:id"  => "profiles#show"
   put "profile"       => "profiles#update"
   
+  get "/users/:username" => "profiles#show",       :as => :username_profile
   resources :users do
     resources :pictures
   end

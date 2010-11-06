@@ -1,63 +1,147 @@
 body {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
+  font: normal normal normal 13px/1.5 'Helvetica Neue', Arial, Helvetica;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-  color: blue;
+  color: #367;
 }
 
 a:hover {
   color: black;
 }
 
-#container {
+a img {
+  border: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+
+#header {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #121212), color-stop(1, #333333));
+  background: -moz-linear-gradient(center bottom, #121212 0%, #333333 100%);
+  color: #d0d0d0;
+  
+  height:50px;
+  line-height: 50px;
+  font-size: 16px;
+
+  margin-bottom: 2em;
+  
+  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0, .9);
+  -moz-box-shadow: 0px 0px 5px rgba(0,0,0, .9);
+  box-shadow: 0px 0px 5px rgba(0,0,0, .9);
+}
+
+#header a {
+  color: #d0d0d0;
+  text-decoration: none;
+}
+
+.container {
   width: 1000px;
   margin: 0 auto;
 }
 
-#header {
-
-}
-
 #logo {
-  
+  float: left;
+  margin-right: 15px;
 }
 
 #logo h1 {
-  
+  color: white;
+  margin: 0;
 }
 
 #nav {
-
+  float: left;
 }
 
 #nav a {
-  padding: 5px 10px;
-  background: #000;
-  color: #fff;
+  color: #d0d0d0;
   text-decoration: none;
-  font-size: 14px;
-  
-  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0, .5);
-  -moz-box-shadow: 0px 0px 5px rgba(0,0,0, .5);
-  box-shadow: 0px 0px 5px rgba(0,0,0, .5);
-  
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  padding: 0 10px;
+  height: 50px;
+  display: inline-block;
 }
 
 #nav a:hover {
   color: white;
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, .9);
-  -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, .9);
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, .9);
+}
+
+#nav a.current {
+  background: #000;
+  color: #fff;	
 }
 
 #session {
+  float: right;
+  line-height: 50px;
+  padding: 0 10px;
+  position: relative;
+}
 
+#session:hover {
+  background: rgba(255, 255, 255, .15);	
+  color: #fff;
+}
+
+#session #portrait {
+  float: left;
+  width: 30px;
+  height: 30px;
+  padding: 10px 10px 10px 0;
+}
+
+#session-menu {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right:0px;
+  background: #363636;
+  z-index: 10;
+  width: 164px;
+  
+  -webkit-box-shadow: 0px 2px 2px rgba(0,0,0, .5);
+  -moz-box-shadow: 0px 2px 2px rgba(0,0,0, .5);
+  box-shadow: 0px 2px 2px rgba(0,0,0, .5);
+  
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px; 
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+
+#session-menu a {
+  color: #d0d0d0;
+  display: block;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+#session-menu a:hover {
+  background: rgba(255, 255, 255, .15);	
+  color: #fff;
+}
+
+#main {
+  float: left;
+  width: 730px;
+  margin: 0;
+}
+
+#side {
+  float: left;
+  width: 250px;
+  margin-left: 20px;
 }
 
 .tags {
@@ -65,25 +149,45 @@ a:hover {
 }
 
 .tag {
-  padding: 5px 10px;
-  background: #000;
-  color: #fff;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#CEF), to(#ACD));
+  border-bottom-left-radius: 3px 3px;
+  border-bottom-right-radius: 3px 3px;
+  border-top-left-radius: 3px 3px;
+  border-top-right-radius: 3px 3px;
+  color: #367;
+  display: inline-block;
+  font-size: 11px;
+  margin-left: 3px;
+  padding: 3px 6px;
   text-decoration: none;
-  font-size: 14px;
-
-  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0, .5);
-  -moz-box-shadow: 0px 0px 5px rgba(0,0,0, .5);
-  box-shadow: 0px 0px 5px rgba(0,0,0, .5);
-
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-
 }
 
 .tag:hover {
-  color: white;
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, .9);
-  -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, .9);
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, .9);
+}
+
+#pictures .picture {
+  float: left;
+  width: 350px;
+  margin-bottom: 2em;
+}
+
+#pictures .odd {
+  margin-right: 30px;
+}
+
+#pictures .even {
+  margin-right: 0;
+}
+
+#pictures .picture .name {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+#pictures .picture .username {
+  float: right;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
 }

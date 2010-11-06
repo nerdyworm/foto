@@ -1,20 +1,30 @@
 <h1>Listing pictures</h1>
-<% @pictures.each do |picture| %>
-<div class="picture">
-  <h2 class="name">
-    <%= picture.name %>
-  </h2>
-  <p class="username">
-      <%= picture.user.username %>
-  </p>
-  <p class="image">
-    <%=image_tag picture.pic(:medium) %>
-  </p>
-  <p class="tags">
-    Tagged With:
-    <% picture.tags.each do |t| %>
-      <%= link_to t.name, "/pictures/tags/#{t.name}", :class => "tag" %>
-    <% end %>
-  </p>
+
+<div id="pictures">
+<% @pictures.each_with_index do |picture, i| %>
+  <div class="picture <%= cycle('odd', 'even')%>">
+    <h2 class="name">
+      <%= picture.name %>
+      <span class="username">
+        <%= link_to picture.user.username, username_profile_path(picture.user.username) %>
+      </span>
+    </h2>
+    <span class="image">
+      <%=link_to image_tag(picture.pic(:medium)), picture_path(picture) %>
+    </span>
+    <span class="tags">
+      <% picture.tags.each do |t| %>
+        <%= link_to t.name, "/pictures/tags/#{t.name}", :class => "tag" %>
+      <% end %>
+    </span>
+  </div>
 <% end %>
+</div>
+<br style="clear: both"/>
+<% if @pictures.size == 6 %>
+<div class="next">
+  <a href="?page=<%= params[:page] ? params[:page].to_i + 1 : 1%>"> more </a>
+</div>
+<% end %>
+
 <%= link_to 'New Picture', new_picture_path %>

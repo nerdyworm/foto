@@ -8,7 +8,11 @@ class ProfilesController < ApplicationController
   end
   
   def show
-    @profile = Profile.find(params[:id])
+    if params[:username]
+      @profile = User.find_by_username(params[:username]).profile
+    else
+      @profile = Profile.find(params[:id])
+    end
   end
  
   def edit

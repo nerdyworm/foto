@@ -5,10 +5,10 @@ class PicturesController < ApplicationController
  
   def index
     if params[:user_id]
-      @pictures = Picture.user(params[:user_id]).public
+      @pictures = Picture.user(params[:user_id]).public.ordered.paginate(params[:page])
     end
 
-    @pictures ||= Picture.includes(:tags, :user).public.all
+    @pictures ||= Picture.includes(:tags, :user).public.ordered.paginate(params[:page])
   end
 
   def show
@@ -23,7 +23,9 @@ class PicturesController < ApplicationController
     if params[:tag]
       @pictures = Picture.joins(:tags).where(
         :tags => {:name => params[:tag]})
-        .includes(:tags, :user).all
+        .paginate(params[:page])
+        .includes(:tags, :user)
+
     end
 
     @pictures ||=[]
