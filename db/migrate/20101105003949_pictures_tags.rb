@@ -1,4 +1,4 @@
-class Tagged < ActiveRecord::Migration
+class PicturesTags < ActiveRecord::Migration
   def self.up
     create_table :pictures_tags, :id => false do |t|
       t.integer :picture_id
