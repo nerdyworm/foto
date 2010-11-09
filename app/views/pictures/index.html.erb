@@ -5,9 +5,11 @@
   <div class="picture <%= cycle('odd', 'even')%>">
     <h2 class="name">
       <%= picture.name %>
+      <% unless picture.username.nil? %>
       <span class="username">
         <%= link_to picture.user.username, username_profile_path(picture.user.username) %>
       </span>
+      <% end %>
     </h2>
     <span class="image">
       <%=link_to image_tag(picture.pic(:medium)), picture_path(picture) %>

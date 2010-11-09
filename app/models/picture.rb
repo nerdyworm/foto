@@ -10,6 +10,8 @@ class Picture < ActiveRecord::Base
   scope :public, where(:private => false)
   scope :ordered, order("pictures.created_at desc")
 
+  delegate :username, :to => :user
+
   class << self
     def user(user_id)
       where("pictures.user_id = ?", user_id)

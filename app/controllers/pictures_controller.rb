@@ -49,7 +49,6 @@ class PicturesController < ApplicationController
   end
 
   def update
-
     if @picture.update_attributes(params[:picture])
       redirect_to(@picture, :notice => 'Picture was successfully updated.')
     else

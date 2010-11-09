@@ -3,6 +3,10 @@ require 'spec_helper'
 describe PicturesController do
   render_views
 
+  it "should be pictures controller" do
+    controller.should be_an_instance_of PicturesController
+  end
+  
   describe "with authenticated user" do
     before(:each) do
       @user = Factory.create(:user)
@@ -43,7 +47,7 @@ describe PicturesController do
     end
   end
 
-  describe "with user_id paramter" do
+  describe "with user_id paramter" do  
     it "should list all the user_id's public pictures" do
       user = Factory.create(:user)
       mine = Factory.create(:picture, :user_id => user.id, :private => false)
@@ -95,6 +99,19 @@ describe PicturesController do
       response.should be_success
       assigns(:pictures).should include me
       assigns(:pictures).should_not include not_me 
+    end
+
+    it "should not show private when seraching by tag" do
+      tag = "tag"
+      me = Factory.create(:picture, :private => false,
+                          :tags => [Factory.create(:tag, :name => tag)])
+      not_me = Factory.create(:picture, :private => true,
+                              :tags => [Factory.create(:tag, :name => tag)])
+
+      get :tags, :tag => tag
+      assigns(:pictures).should include me
+      assigns(:pictures).should_not include not_me
+
     end
   end
 end
