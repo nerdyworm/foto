@@ -8,7 +8,7 @@ class PicturesController < ApplicationController
     #  @pictures = Picture.user(params[:user_id]).public.ordered.paginate(params[:page])
     #end
 
-    @pictures ||= []#Picture.includes(:tags, :user).public.ordered.paginate(params[:page])
+    @pictures ||= Picture.includes(:tags, :user).public.ordered.paginate(params[:page])
   end
 
   def show
