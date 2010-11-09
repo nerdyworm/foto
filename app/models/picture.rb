@@ -1,7 +1,11 @@
 class Picture < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :tags
-  has_attached_file :pic, :styles => { :full => "730x730>", :medium => "350x220#", :thumb => "100x100>" }
+  has_attached_file :pic, 
+    :storage => :s3, 
+    :s3_credentials => "#{Rails.root}/config/s3.yml", 
+    :path => ":attachment/:id/:style.:extension",
+    :styles => { :full => "730x730>", :medium => "350x220#", :thumb => "100x100>" }
 
   scope :public, where(:private => false)
   scope :ordered, order("pictures.created_at desc")
