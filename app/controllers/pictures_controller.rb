@@ -20,13 +20,13 @@ class PicturesController < ApplicationController
   end
   
   def tags
-    if params[:tag]
-      @pictures = Picture.joins(:tags).where(
-        :tags => {:name => params[:tag]})
-        .paginate(params[:page])
-        .includes(:tags, :user)
-
-    end
+    #if params[:tag]
+    #  @pictures = Picture.joins(:tags).where(
+    #    :tags => {:name => params[:tag]})
+    #    .paginate(params[:page])
+    #    .includes(:tags, :user)
+    #
+    #end
 
     @pictures ||=[]
 
