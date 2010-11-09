@@ -12,20 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pic %><br />
+    <%= f.label :picture %><br />
     <%= f.file_field :pic %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
+    <span class="help"> The title of the image </span>
   </div>
   <div class="field">
     <%= f.label :tags %><br />
     <%= f.text_field :tags_s %>
+    <span class="help"> Seperate tags with a comma e.g. tag1, tag2 </span>
   </div>
   <div class="field">
-    <%= f.label :private %><br />
+    <%= f.label :private %>:
     <%= f.check_box :private %>
+    <span class="help"> If private is checked this picture is only visible to you.</span>
   </div>
   <div class="actions">
     <%= f.submit %>

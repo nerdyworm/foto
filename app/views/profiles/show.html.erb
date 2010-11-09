@@ -1,19 +1,23 @@
 <h1> <%= @profile.user.username %>'s Profile </h1>
-<p class="pictures">
+<p> other stuff about the user goes here </p>
+
+<h2> Public Pictures </h2>
+<div class="pictures">
 <% @profile.user.pictures.each do |p| %>
   <div class="picture">
-    <p class="name">
+    <div class="name">
       <%= p.name %>
-    </p>
-    <%= link_to image_tag(p.pic(:thumb)), p %>
-    <p class="private">
-      Private? <%= p.private ? "yes" : "no" %>
-    </p>
+    </div>
+    <div class="thumb">
+      <%= link_to image_tag(p.pic(:thumb)), p %>
+    </div>
   </div>
 <% end %>
-</p>
+</div>
 
+<!--
 <% if current_user %>
 <%= link_to 'Edit', edit_user_profile_path %> |
 <%= link_to 'Back', user_profile_path %>
 <% end %>
+-->
