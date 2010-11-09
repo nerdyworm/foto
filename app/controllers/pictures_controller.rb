@@ -21,7 +21,7 @@ class PicturesController < ApplicationController
   
   def tags
     if params[:tag]
-      @pictures = Picture.joins(:tags).where(
+      @pictures = Picture.joins(:tags).public.where(
         :tags => {:name => params[:tag]}).paginate(params[:page]).includes(:tags, :user)
     end
 
