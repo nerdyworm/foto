@@ -17,7 +17,7 @@
   <%- @picture.comments.each do |c| %>
   <div class="comment" id="comment-<%=c.id%>">
     <div class="username">
-      <%= c.username %>
+      <%= link_to c.username,  username_profile_path(c.username) %>
     </div>
     <div class="content">
       <%= c.comment %>
@@ -35,6 +35,7 @@
     <%= f.hidden_field :picture_id, :value => @picture.id %>
     
     <div class="field">
+      <label for="comment">Leave feedback</label><br/>
       <%= f.text_area :comment %>
     </div>
 
