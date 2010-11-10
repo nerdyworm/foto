@@ -7,6 +7,12 @@ describe Picture do
   end
   
   describe "relations" do
+    describe "comments" do
+      it "should respond to comments" do
+        Picture.new.should respond_to :comments
+      end
+    end
+
     describe "tags" do
       it "should respond to tags" do
         Picture.new.should respond_to :tags

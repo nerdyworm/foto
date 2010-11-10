@@ -1,5 +1,6 @@
 Foto::Application.routes.draw do
 
+
   devise_for :users
   
   get "welcome/index"
@@ -13,7 +14,10 @@ Foto::Application.routes.draw do
     resources :pictures
   end
   
-  resources :pictures
+  resources :pictures do
+    resources :comments
+  end
+
   match "/pictures/tags/:tag" => "pictures#tags", :as => :tag
 
   root :to => "welcome#index"

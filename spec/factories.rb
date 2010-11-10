@@ -28,3 +28,10 @@ end
 Factory.define :tag do |f|
   f.name "tag"
 end
+
+Factory.define :comment do |f|
+  f.helpful true
+  f.score 10
+  f.comment  "This is a comment"
+  f.association :user, :factory => :user
+end
