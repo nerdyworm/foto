@@ -1,6 +1,6 @@
-class Comment < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :picture
+class Comment# < ActiveRecord::Base
+  #belongs_to :user
+  #belongs_to :picture
 
-  delegate :email, :username, :to => :user
+  #delegate :email, :username, :to => :user
 end

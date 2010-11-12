@@ -1,17 +1,19 @@
-class Picture < ActiveRecord::Base
-  belongs_to :user
-  has_many :comments
-  has_and_belongs_to_many :tags
-  has_attached_file :pic, 
-    :storage => :s3, 
-    :s3_credentials => "#{Rails.root}/config/s3.yml", 
-    :path => ":attachment/:id/:style.:extension",
-    :styles => { :full => "730x730>", :medium => "350x220#", :thumb => "100x100>" }
+class Picture 
+  include Mongoid::Document
+  
+  #belongs_to :user
+  #has_many :comments
+  #has_and_belongs_to_many :tags
+  #has_attached_file :pic, 
+  #  :storage => :s3, 
+  #  :s3_credentials => "#{Rails.root}/config/s3.yml", 
+  #  :path => ":attachment/:id/:style.:extension",
+  #  :styles => { :full => "730x730>", :medium => "350x220#", :thumb => "100x100>" }
 
-  scope :public, where(:private => false)
-  scope :ordered, order("pictures.created_at desc")
+  #scope :public, where(:private => false)
+  #scope :ordered, order("pictures.created_at desc")
 
-  delegate :username, :to => :user
+  #delegate :username, :to => :user
 
   class << self
     def user(user_id)

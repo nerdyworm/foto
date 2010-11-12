@@ -1,4 +1,4 @@
-class Profile < ActiveRecord::Base
-  belongs_to :user
-  attr_accessible :username
+class Profile
+  include Mongoid::Document
+  
 end

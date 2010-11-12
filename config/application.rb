@@ -1,6 +1,10 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+#require "action_controller/railtie"
+#require "action_mailer/railtie"
+#require "active_resource/railtie"
+#require "rails/test_unit/railtie"
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -39,11 +43,11 @@ module Foto
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-     if Rails.env.test?
-      initializer :after => :initialize_dependency_mechanism do
-        # Work around initializer in railties/lib/rails/application/bootstrap.rb
-        ActiveSupport::Dependencies.mechanism = :load
-      end
-    end
+    #if Rails.env.test?
+    #  initializer :after => :initialize_dependency_mechanism do
+    #    # Work around initializer in railties/lib/rails/application/bootstrap.rb
+    #    ActiveSupport::Dependencies.mechanism = :load
+    #  end
+    #end
   end
 end

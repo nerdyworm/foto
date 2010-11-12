@@ -3,7 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.1'
 
 #database, heroku defaults
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem "mongoid", ">= 2.0.0.beta.19"
+gem 'bson_ext'
 
 #authentication
 gem "devise"
