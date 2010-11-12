@@ -1,4 +1,7 @@
 <h1> <%= @profile.user.username %>'s Profile </h1>
+<div id="profile-image">
+  <%= gravatar(@profile.user.email, 200) %>
+</div>
 <p> other stuff about the user goes here </p>
 
 <h2> Public Pictures </h2>
