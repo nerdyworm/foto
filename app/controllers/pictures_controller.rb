@@ -4,11 +4,11 @@ class PicturesController < ApplicationController
   before_filter :authenticate_ownership!, :only   => [:edit, :update, :destroy]
  
   def index
-    if params[:user_id]
-      @pictures = Picture.user(params[:user_id]).public.ordered.paginate(params[:page])
-    end
+    #if params[:user_id]
+    #  @pictures = Picture.user(params[:user_id]).public.ordered.paginate(params[:page])
+    #end
 
-    @pictures ||= Picture.includes(:tags, :user).public.ordered.paginate(params[:page])
+    @pictures ||= Picture.all #Picture.includes(:tags, :user).public.ordered.paginate(params[:page])
   end
 
   def show

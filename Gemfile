@@ -10,7 +10,7 @@ gem 'bson_ext'
 gem "devise"
 
 #uploads
-gem 'paperclip'
+gem "paperclip", :git => "http://github.com/thoughtbot/paperclip.git"
 gem 'aws-s3'
 
 #testing gems

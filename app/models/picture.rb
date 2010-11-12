@@ -1,5 +1,32 @@
+require 'paperclip'
+
 class Picture 
   include Mongoid::Document
+  include Paperclip
+  
+  field :name
+  field :tags, :type => Array
+  field :private, :type => Boolean
+  
+  field :avatar_file_name
+  field :avatar_content_type
+  field :avatar_file_size,    :type => Integer
+  field :avatar_updated_at,   :type => DateTime
+
+  
+  has_attached_file :avatar,
+    :path           => ":attachment/:id/:style/:basename.:extension",
+    :storage        => :s3,
+    :s3_credentials => File.join(Rails.root, 'config', 's3.yml'),
+    :styles => {
+      :original => ['1920x1680>', :jpg],
+      :small    => ['100x100#', :jpg],
+      :medium   => ['250x250', :jpg],
+      :large    => ['500x500>', :jpg]
+    },
+    :convert_options => { :all => '-background white -flatten +matte'}
+  
+  
   
   #belongs_to :user
   #has_many :comments
@@ -26,7 +53,7 @@ class Picture
   end
 
   def tags_s
-    tags.map(&:name).join(", ")
+    #tags.map(&:name).join(", ")
   end
 
   def tags_s=(ts)

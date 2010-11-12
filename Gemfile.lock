@@ -1,3 +1,11 @@
+GIT
+  remote: http://github.com/thoughtbot/paperclip.git
+  revision: fa7ee7caf4255c16ac52bbe28afd01c4d30fe0ec
+  specs:
+    paperclip (2.3.5)
+      activerecord
+      activesupport
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -83,9 +91,6 @@ GEM
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
     nokogiri (1.4.3.1)
-    paperclip (2.3.4)
-      activerecord
-      activesupport
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -150,7 +155,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   mongoid (>= 2.0.0.beta.19)
-  paperclip
+  paperclip!
   rails (= 3.0.1)
   rspec-rails (>= 2.0.1)
   spork (>= 0.8.4)
