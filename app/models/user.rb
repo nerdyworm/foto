@@ -10,7 +10,8 @@ class User
   embeds_one :profile
   references_many :pictures
   
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :username, :email, :password, :password_confirmation
+  
   class << self
     def find_by_username(username) 
       first(:conditions => {:username => username})
