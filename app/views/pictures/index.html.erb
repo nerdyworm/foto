@@ -7,21 +7,24 @@
       <%= picture.name %>
       <% unless picture.username.nil? %>
       <span class="username">
-        <%= link_to picture.user.username, username_profile_path(picture.user.username) %>
+        <%= link_to picture.username, username_profile_path(picture.username) %>
       </span>
       <% end %>
     </h2>
     <span class="image">
-      <%=link_to image_tag(picture.pic(:medium)), picture_path(picture) %>
+    <% if picture.pic.medium.url %>
+      <%=link_to image_tag(picture.pic.medium.url), picture_path(picture) %>
+    <% end %>
     </span>
     <span class="tags">
       <% picture.tags.each do |t| %>
-        <%= link_to t.name, "/pictures/tags/#{t.name}", :class => "tag" %>
+        <%= link_to t, "/pictures/tags/#{t}", :class => "tag" %>
       <% end %>
     </span>
   </div>
 <% end %>
 </div>
+
 <br style="clear: both"/>
 <% if @pictures.size == 6 %>
 <div class="next">

@@ -2,17 +2,13 @@ class ProfilesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
   def user_profile
-    @profile = current_user.profile
+    @user = current_user
     
     render :action => "show" 
   end
   
   def show
-    if params[:username]
-      @profile = User.find_by_username(params[:username]).profile
-    else
-      @profile = Profile.find(params[:id])
-    end
+    @user = User.find_by_username params[:username]
   end
  
   def edit

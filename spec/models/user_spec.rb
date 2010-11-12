@@ -13,13 +13,7 @@ describe User do
       it "should have a profile" do
         user = User.new
         user.should respond_to :profile
-      end
-      
-      it "should create a profile when created" do
-        lambda do
-          user = Factory.create(:user)
-        end.should change(Profile, :count).by(1)
-      end
+      end      
     end
     
     describe "pictures" do
@@ -41,24 +35,24 @@ describe User do
         user.can_edit?(nil).should == false 
       end
 
-      it "should be false if user down not own the editable" do
+      it "should be false if user does not own the editable" do
         user = Factory.create(:user)
         editable = mock "Editable"
-        editable.should_receive(:user_id).and_return(-1)
+        editable.should_receive(:user).and_return(-1)
         user.can_edit?(editable).should == false
       end
       
       it "should be true if user owns the editable" do
         user = Factory.create(:user)
         editable = mock "Editable"
-        editable.should_receive(:user_id).and_return(user.id)
+        editable.should_receive(:user).and_return(user)
         user.can_edit?(editable).should == true
       end
 
       it "should be true if user is an admin" do
         user = Factory.create(:user, :admin => true)
         editable = mock "Editable"
-        editable.should_receive(:user_id).and_return(user.id + 1)
+        editable.should_receive(:user).and_return(nil)
         user.can_edit?(editable).should == true
       end
     end

@@ -1,18 +1,18 @@
-<h1> <%= @profile.user.username %>'s Profile </h1>
+<h1> <%= @user.username %>'s Profile </h1>
 <div id="profile-image">
-  <%= gravatar(@profile.user.email, 200) %>
+  <%= gravatar(@user.email, 200) %>
 </div>
 <p> other stuff about the user goes here </p>
 
 <h2> Public Pictures </h2>
 <div class="pictures">
-<% @profile.user.pictures.each do |p| %>
+<% @user.pictures.each do |p| %>
   <div class="picture">
     <div class="name">
       <%= p.name %>
     </div>
     <div class="thumb">
-      <%= link_to image_tag(p.pic(:thumb)), p %>
+      <%= link_to image_tag(p.pic.thumb.url), p %>
     </div>
   </div>
 <% end %>

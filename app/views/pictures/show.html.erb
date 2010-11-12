@@ -5,11 +5,11 @@
   <% end %>
 </h1>
 <p class="full">
-  <%= image_tag @picture.pic.url(:full) %>
+  <%= image_tag @picture.pic.url(:large) %>
 </p>
 <div class="tags">
 <% @picture.tags.each do |t| %>
-  <%= link_to t.name, "/pictures/tags/#{t.name}", :class => "tag" %>
+  <%= link_to t, "/pictures/tags/#{t}", :class => "tag" %>
 <% end %>
 </div>
 

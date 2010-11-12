@@ -7,15 +7,20 @@ Spork.prefork do
   unless defined?(Rails)
     require File.dirname(__FILE__) + "/../config/environment"
   end
+  
   require 'rspec/rails'
   require 'factory_girl'
   Factory.find_definitions
   
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+  
   RSpec.configure do |config|
     config.mock_with :rspec
-    config.use_transactional_fixtures = true
     config.include Devise::TestHelpers, :type => :controller
+    
+    config.before :all do
+      Mongoid.master.collections.select {|c| c.name !~ /system/ }.each(&:drop)
+    end
   end
 
   ActiveSupport::Dependencies.clear
@@ -23,6 +28,7 @@ end
 
 Spork.each_run do
 end
+
 
 # --- Instructions ---
 # - Sort through your spec_helper file. Place as much environment loading 

@@ -6,14 +6,18 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   field :username
+  field :admin, :type => Boolean, :default => false
   embeds_one :profile
-  # Setup accessible (or protected) attributes for your model
-  #attr_accessible :username, :email, :password, :password_confirmation, :remember_me
-  #has_one :profile
-  #has_many :pictures  
-  #after_create :create_profile
+  references_many :pictures
+  
+  attr_accessible :email, :password, :password_confirmation
+  class << self
+    def find_by_username(username) 
+      first(:conditions => {:username => username})
+    end
+  end
 
   def can_edit?(editable)
-    editable && editable.user_id == self.id || self.admin?
+    editable && editable.user == self || self.admin?
   end
 end

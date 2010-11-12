@@ -37,10 +37,12 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 
     if @comment.valid?
-      @comment.picture = @picture
-      @comment.user = current_user
+      @comment.email    = current_user.email
       @comment.username = current_user.username
-      @comment.save
+      @picture.comments << @comment
+      @picture.save 
+      
+      puts @picture.comments.first.username
 
       redirect_to(@picture, :notice => 'Comment was added!')
     else

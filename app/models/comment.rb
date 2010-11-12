@@ -1,6 +1,11 @@
-class Comment# < ActiveRecord::Base
-  #belongs_to :user
-  #belongs_to :picture
-
-  #delegate :email, :username, :to => :user
+class Comment
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  
+  field :comment
+  
+  field :email
+  field :username
+  
+  embedded_in :picture, :inverse_of => :comments
 end

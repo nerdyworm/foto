@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Picture do
+describe Picture do 
   it "should belong to a user" do
     picture = Picture.new
     picture.should respond_to :user
@@ -19,13 +19,10 @@ describe Picture do
       end
 
       it "should do things with tags_s" do
-        cakes   = Factory.create(:tag, :name => "cakes")
-        cookies = Factory.create(:tag, :name => "cookies")
-
         picture = Factory.create(:picture, :tags_s => "cookies, cakes")
 
-        picture.tags.should include cakes
-        picture.tags.should include cookies
+        picture.tags.should include "cakes"
+        picture.tags.should include "cookies"
       end
 
       it "should only create one tag" do
@@ -35,20 +32,18 @@ describe Picture do
       end
 
       it "should clear exisiting tags when setting with tags_s" do
-        cookies = Factory.create(:tag, :name => "cookies")
-
         picture = Factory.create(:picture, :tags_s => "cookies")
         picture.tags_s = ""
 
-        picture.tags.should_not include cookies
+        picture.tags.should_not include "cookies"
       end
     end
   end
 
   describe "class methods" do
     describe "user" do
-      it "should respond to user" do
-        Picture.should respond_to(:user)
+      it "should respond to by_user_id" do
+        Picture.should respond_to(:find_by_user_id)
       end
       
       it "should return all pictures by user" do
@@ -56,8 +51,8 @@ describe Picture do
         find_me = Factory.create(:picture, :user => user)
         not_me  = Factory.create(:picture)
 
-        Picture.user(user.id).should include find_me
-        Picture.user(user.id).should_not include not_me
+        Picture.find_by_user_id(user.id).should include find_me
+        Picture.find_by_user_id(user.id).should_not include not_me
       end
     end
   end

@@ -10,8 +10,11 @@ gem 'bson_ext'
 gem "devise"
 
 #uploads
-gem "paperclip", :git => "http://github.com/thoughtbot/paperclip.git"
-gem 'aws-s3'
+gem 'fog'
+gem 'carrierwave'
+
+#image processing
+gem 'rmagick'
 
 #testing gems
 group :development, :test do
@@ -19,33 +22,10 @@ group :development, :test do
   gem "steak",        ">= 1.0.0.rc.1"
   gem "rspec-rails",  ">= 2.0.1"
   gem "factory_girl_rails"
-end
-
-group :test do
   gem 'spork', '>= 0.8.4'
+  gem 'autotest'
+  gem 'autotest-rails'
 end
-  
-gem 'autotest'
-gem 'autotest-rails'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
-
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
 
 
 
