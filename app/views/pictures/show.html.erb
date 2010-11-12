@@ -18,7 +18,7 @@
   <div class="comment" id="comment-<%=c.id%>">
     <div class="username">
       <%= gravatar(c.email, 50) %>
-      <%= link_to c.username,  username_profile_path(c.username) %>
+      <%= link_to c.username,  "/users/#{c.username}" %>
     </div>
     <div class="content">
       <%= c.comment %>
