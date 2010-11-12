@@ -1,5 +1,3 @@
-require 'paperclip'
-
 class Picture 
   include Mongoid::Document
   include Paperclip
