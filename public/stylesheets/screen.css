@@ -1,10 +1,14 @@
 body {
-  font: normal normal normal 13px/1.5 'Helvetica Neue', Arial, Helvetica;
+  font-family: "droid-sans-1", "droid-sans-2", Tahoma, Arial, sans-serif;
+
+  font-size: 14px;
+  line-height: 18px;
   margin: 0;
   padding: 0;
 }
 
 a {
+  color: #0084D4;
 }
 
 a:hover {
@@ -18,15 +22,20 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
 }
 
+
+h1, h2 {
+  color: #0084D4;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #B9E2F5;
+}
+
 #header {
   height:50px;
-  line-height: 50px;
-  font-size: 16px;
-  margin-bottom: 2em;
+  margin: 2em 0;
 }
 
 #header a {
-  text-decoration: none;
+
 }
 
 .container {
@@ -39,18 +48,21 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 15px;
 }
 
+#logo a {
+  text-decoration: none;
+}
+
 #logo h1 {
   margin: 0;
+  border: none;
 }
 
 #nav {
-  float: left;
+  float: right;
 }
 
 #nav a {
-  text-decoration: none;
-  padding: 0 10px;
-  height: 50px;
+  padding: 5px 10px;
   display: inline-block;
 }
 
@@ -58,6 +70,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #nav a.current {
+}
+
+#nav a.user-profile-link {
+  background: #0084D4;
+  color: white;
+  text-decoration: none;
 }
 
 #new-picture {
@@ -119,22 +137,32 @@ h1, h2, h3, h4, h5, h6 {
 
 #pictures .picture {
   float: left;
-  width: 350px;
+  width: 300px;
   margin-bottom: 2em;
 }
 
-#pictures .odd {
-  margin-right: 30px;
+#pictures .first {
+  margin-right: 50px;
 }
 
-#pictures .even {
-  margin-right: 0;
+#pictures .second {
+  margin-right: 50px;
+}
+
+#pictures .third {
+  margin-right: 0px;
+}
+
+#pictures .picture img {
+  width: 300px;
+  height: 200px;
 }
 
 #pictures .picture .name {
   margin: 0;
   font-size: 13px;
   line-height: 18px;
+  border: none;
 }
 
 #pictures .picture .username {
