@@ -2,18 +2,22 @@ class Picture
   include Mongoid::Document
   include Mongoid::Timestamps
   
+  field :desc
   field :name
-  field :tags,    :type => Array
-  field :private, :type => Boolean
-  
   field :username
+  field :tags,    :type => Array
+  field :private, :type => Boolean, :default => false
+  
+  mount_uploader :pic, PictureImageProcessor  
  
   embeds_many :comments
   
   referenced_in :user
   
-  mount_uploader :pic, PictureImageProcessor  
   
+  validates_presence_of :name
+  validates_presence_of :username
+
   def user=(u)
     self.user_id  = u.id
     self.username = u.username

@@ -7,22 +7,73 @@
 <div class="large">
   <%= image_tag @picture.pic.url(:large), :width => "100%"%>
 </div>
-<div class="tags">
-<% @picture.tags.each do |t| %>
-  <%= link_to t, "/pictures/tags/#{t}", :class => "tag" %>
-<% end %>
-</div>
-
-<div id="comments">
-  <%- @picture.comments.each do |c| %>
-  <div class="comment" id="comment-<%=c.id%>">
+<div class="picture-content">
+  <div class="user">
+    <div class="avatar">
+      <%= gravatar(@picture.user.email, 50) %>
+    </div>
     <div class="username">
-      <%= gravatar(c.email, 50) %>
-      <%= link_to c.username, username_profile_path(c.username) %>
+      <%= link_to @picture.username, username_profile_path(@picture.username) %>
     </div>
-    <div class="content">
-      <%= c.comment %>
+    <div class="description">
+      <%= @picture.desc %>
     </div>
+  </div>
+
+  <div class="tags">
+    Tags: 
+  <% @picture.tags.each do |t| %>
+    <%= link_to t, "/pictures/tags/#{t}", :class => "tag" %>
+  <% end %>
+  </div>
+
+  <div class="link-flag">
+    <%= link_to "Link", @picture %> | <a href="#"> Flag </a>
+  </div>
+
+  <h2> Feedback </h2>
+
+  <div id="comments">
+  <%- @picture.comments.each do |c| %>
+    <div class="feedback clearfix" id="comment-<%=c.id%>">
+      <div class="gutter">
+        <div class="votes">
+          <div class="up">
+            <%= link_to "Good feedback", "#", :class => "vote-up-feedback" %>
+          </div>
+          <div class="count">
+          10
+          </div>
+          <div class="down">
+            <%= link_to "Bad feedback", "#", :class => "vote-down-feedback" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="feedback-content">
+        <div class="feedback-text">
+          <%= c.comment %>
+        </div>
+
+        <div class="feedback-footer">
+          <div class="feedback-user-info">
+            <a href="#{username_profile_path(c.username)}">
+              <div class="feedback-user-avatar">
+                <%= gravatar(c.email, 32) %>
+              </div>
+              <div class="feedback-user-username">
+                <%= link_to c.username, username_profile_path(c.username) %>
+              </div>
+            </a>
+          </div>
+    
+          <div class="feedback-link-flag">
+            <%= link_to "Link", @picture %> | <a href="#"> Flag </a>
+          </div>
+        </div>
+
+    </div>
+
   </div>
   <% end %>
 </div>
@@ -34,11 +85,11 @@
     
     <div class="field">
       <label for="comment">Leave feedback</label><br/>
-      <%= f.text_area :comment %>
+      <%= f.text_area :comment, :cols => 80, :rows => 8 %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Post Comment" %>
+      <%= f.submit "Post Feedback" %>
     </div>
 
   <% end %>
@@ -48,4 +99,4 @@
   You must be a member to post feedback.
 </div>
 <% end %>
-
+</div>

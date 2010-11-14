@@ -11,7 +11,7 @@ class PictureImageProcessor < CarrierWave::Uploader::Base
   end  
 
   version :large do
-    process :resize_to_fill => [ 1024, 768 ]  
+    process :resize_to_fit => [ 1024, 768 ]  
   end
   
   def cache_dir

@@ -198,4 +198,129 @@ a.edit {
   color: #666;
 }
 
+.picture-content {
+  float: left;
+  width: 700px;
+}
+
+.user {
+
+}
+
+.user .avatar, .feedback-user-avatar .avatar {
+  float: left;
+  margin: 0 5px 5px 0;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.tags {
+  clear: both;
+}
+
+.link-flag {
+  margin-bottom: 1em;
+}
+
+.gutter {
+  float: left;
+  width: 50px;
+}
+
+.votes {
+}
+
+.feedback {
+  margin-bottom: 2em;
+  border-bottom: 1px dotted #B9E2F5;
+}
+
+.feedback-footer {
+  clear: both;
+  font-size: 12px;
+}
+
+.feedback-content {
+  float: left;
+  width: 645px;
+  margin-bottom: 1em;
+}
+
+.feedback-posted-at {
+  float: ;
+}
+
+.feedback-text {
+  float: left;
+  margin-bottom: 1em;
+}
+
+.feedback-user-info {
+  float: right;
+}
+
+.feedback-user-avatar {
+  float: left;
+}
+
+.feedback-user-username {
+  float: left;
+}
+
+.feedback-user-username a {
+  text-decoration: none;
+}
+
+.feedback-link-flag {
+}
+
+.votes {
+  width: 32px;
+  margin-bottom: 1em;
+}
+
+.votes .count {
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  text-align:center;
+}
+
+.votes a {
+  display: block;
+  height: 32px;
+  width: 32px;
+  text-indent: -9999px;
+}
+
+.vote-up-feedback {
+  background: url(/images/vote-up.png);
+}
+
+.vote-down-feedback {
+  background: url(/images/vote-down.png);
+}
+
+/* float clearing for IE6 */
+* html .clearfix{
+  height: 1%;
+  overflow: visible;
+}
+
+/* float clearing for IE7 */
+*+html .clearfix{
+  min-height: 1%;
+}
+
+/* float clearing for everyone else */
+.clearfix:after{
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  font-size: 0;
+}
 
