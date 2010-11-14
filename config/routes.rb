@@ -15,12 +15,15 @@ Foto::Application.routes.draw do
   end
   
   resources :pictures do
-    resources :comments
+    resources :feedbacks
   end
 
   match "/pictures/tags/:tag" => "pictures#tags", :as => :tag
+  match "/feedbacks/:id/upvote"    => "feedbacks#upvote", :as => :feedback_upvote
+  match "/feedbacks/:id/downvote"  => "feedbacks#downvote", :as => :feedback_downvote
 
   root :to => "welcome#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

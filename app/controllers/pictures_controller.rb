@@ -14,7 +14,6 @@ class PicturesController < ApplicationController
              :status  => 404 and return
     end
 
-    @comment ||= Comment.new
   end
   
   def tags
@@ -28,6 +27,13 @@ class PicturesController < ApplicationController
     @pictures ||=[]
 
     render :index
+  end
+
+  def upvote 
+    @picture = Picture.find(params[:picture_id])
+
+    Picture.upvote(params[:picture_id], current_user.id)
+    render :show
   end
 
   def new

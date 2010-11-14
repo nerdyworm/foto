@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CommentsController do
+describe FeedbacksController do
   render_views
 
   describe "with authenticated user" do
@@ -12,7 +12,7 @@ describe CommentsController do
  
     describe "POST create with picture_id and valid params" do
       before(:each) do
-        post :create, :picture_id => @picture.id, :comment => Factory.attributes_for(:comment)
+        post :create, :picture_id => @picture.id, :feedback => Factory.attributes_for(:feedback)
       end
       
       it "should assign @picture" do
@@ -23,12 +23,12 @@ describe CommentsController do
         response.should redirect_to assigns(:picture)
       end
 
-      it "should add comment to picture" do
-        assigns(:picture).comments.count.should == 1
+      it "should add feedback to picture" do
+        assigns(:picture).feedbacks.count.should == 1
       end
 
-      it "should assign current_user.username to newly created comment" do
-        assigns(:picture).comments.first.username.should == @user.username 
+      it "should assign current_user.username to newly created feedback" do
+        assigns(:picture).feedbacks.first.username.should == @user.username 
       end
     end
   end
@@ -38,10 +38,10 @@ describe CommentsController do
       @picture = Factory.create(:picture);
     end
   
-    it "should not be able to create a comment" do 
+    it "should not be able to create a feedback" do 
       lambda do
-        post :create, :picture_id => @picture.id, :comment => Factory.attributes_for(:comment) 
-      end.should_not change(@picture.reload.comments, :count)
+        post :create, :picture_id => @picture.id, :feedback => Factory.attributes_for(:feedback) 
+      end.should_not change(@picture.reload.feedbacks, :count)
 
       response.should be_redirect
     end

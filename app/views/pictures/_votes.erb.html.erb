@@ -1,0 +1,12 @@
+<div class="votes"> 
+  <div class="up">
+    <%= link_to "Good feedback", feedback_upvote_path(c), :remote => true, :class => "vote-up-feedback" %>
+  </div>
+  <div class="count">
+    <%= c.votes %>
+  </div>
+  <div class="down">
+    <%= link_to "Bad feedback", feedback_downvote_path(c), :remote => true, :class => "vote-down-feedback" %>
+  </div>
+</div>
+

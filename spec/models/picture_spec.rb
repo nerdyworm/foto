@@ -7,9 +7,9 @@ describe Picture do
   end
   
   describe "relations" do
-    describe "comments" do
-      it "should respond to comments" do
-        Picture.new.should respond_to :comments
+    describe "feedbacks" do
+      it "should respond to feedbackss" do
+        Picture.new.should respond_to :feedbacks
       end
     end
 
@@ -53,6 +53,45 @@ describe Picture do
 
         Picture.find_by_user_id(user.id).should include find_me
         Picture.find_by_user_id(user.id).should_not include not_me
+      end
+    end
+
+    describe "vote" do
+      it "should respond to vote" do
+        Picture.should respond_to(:vote)
+      end
+
+    describe "upvote" do
+      it "should respond to upvote" do
+        Picture.should respond_to(:upvote)
+      end
+
+      it "should increment votes by one if user has not voted" do
+        user = Factory.create(:user)
+        picture = Factory.create(:picture)
+        
+        Picture.upvote(picture.id, user.id.to_s)
+        Picture.upvote(picture.id, user.id.to_s)
+        picture.reload
+        picture.votes.should == 1
+      end
+    end
+
+      describe "downvote" do
+        it "should respond to downvote" do
+          Picture.should respond_to :downvote
+        end
+
+        it "should decrement votes by one if user has not voted" do
+          user = Factory.create(:user)
+          picture = Factory.create(:picture)
+
+          Picture.downvote(picture.id, user.id.to_s)
+          Picture.downvote(picture.id, user.id.to_s)
+
+          picture.reload
+          picture.votes.should == -1
+        end
       end
     end
   end

@@ -7,11 +7,15 @@ class Picture
   field :username
   field :tags,    :type => Array
   field :private, :type => Boolean, :default => false
-  
+ 
+  field :voters,  :type => Array
+  field :votes,   :type => Integer, :default => 0
+
   mount_uploader :pic, PictureImageProcessor  
  
-  embeds_many :comments
-  
+  #embeds_many :comments
+  references_many :feedbacks
+
   referenced_in :user
   
   
@@ -38,6 +42,22 @@ class Picture
     
     def find_by_user_id(user_id)
       where(:user_id => user_id)
+    end
+   
+    def vote(story_id, user_id, direction)
+      story_id = BSON::ObjectId(story_id) if story_id.class == String
+      user_id  = BSON::ObjectId(user_id) if user_id == String
+
+      collection.update({'_id' => story_id, 'voters' => {'$ne' => user_id}}, 
+        {'$inc' => {'votes' => direction}, '$push' => {'voters' => user_id}})
+    end
+
+    def downvote(story_id, user_id)
+      self.vote(story_id, user_id, -1)
+    end
+
+    def upvote(story_id, user_id)
+      self.vote(story_id, user_id, 1)
     end
   end
 

@@ -22,13 +22,13 @@ describe PicturesController do
       lambda do
         post :create, :picture => Factory.attributes_for(:picture)
       end.should change(Picture, :count).by(1)
-    end
+    end 
     
     it "should assign the current user to the new picture" do
       post :create, :picture => Factory.attributes_for(:picture) 
       picture = assigns(:picture)
       picture.user.should == @user
-    end
+    end 
     
     it "should be able to edit pictures that belong to them" do 
       picture = Factory.create(:picture, :user => @user)

@@ -34,20 +34,10 @@
   <h2> Feedback </h2>
 
   <div id="comments">
-  <%- @picture.comments.each do |c| %>
+    <%- @picture.feedbacks.order_by(:votes.desc).each do |c| %>
     <div class="feedback clearfix" id="comment-<%=c.id%>">
       <div class="gutter">
-        <div class="votes">
-          <div class="up">
-            <%= link_to "Good feedback", "#", :class => "vote-up-feedback" %>
-          </div>
-          <div class="count">
-          10
-          </div>
-          <div class="down">
-            <%= link_to "Bad feedback", "#", :class => "vote-down-feedback" %>
-          </div>
-        </div>
+        <%= render :partial => 'votes', :locals => { :feedback => c } %>
       </div>
 
       <div class="feedback-content">
@@ -57,7 +47,7 @@
 
         <div class="feedback-footer">
           <div class="feedback-user-info">
-            <a href="#{username_profile_path(c.username)}">
+            <a href="<%= username_profile_path(c.username) %>">
               <div class="feedback-user-avatar">
                 <%= gravatar(c.email, 32) %>
               </div>
@@ -80,7 +70,7 @@
 
 <%- if current_user %>
 <div id="comment-form">
-  <%= form_for :comment, :url => picture_comments_path(@picture) do |f| %>
+  <%= form_for :feedback, :url => picture_feedbacks_path(@picture) do |f| %>
     <%= f.hidden_field :picture_id, :value => @picture.id %>
     
     <div class="field">
