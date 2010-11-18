@@ -30,16 +30,10 @@
       </div>
     </div>
   </div>
-  <div class="container">
-    <!--
-    <% if flash[:alert] %>
-    <div id="alert">
-      <%= flash[:alert] %>
-    </div>
-    <% end %>
-    -->
-    <%= yield %>
-    
+  <div id="main-content" class="container">
+		<div class="boxed clearfix">
+    	<%= yield %>
+		</div>
   </div>
 </body>
 </html>

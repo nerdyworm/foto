@@ -1,10 +1,13 @@
-<h1> <%= @user.username %>'s Profile </h1>
-<div id="profile-image">
-  <%= gravatar(@user.email, 200) %>
+<div class="left">
+<div id="profile" class="clearfix">
+  <%= gravatar(@user.email, 175) %>
+  <div class="username">
+    <%= @user.username %>
+  </div>
 </div>
-<p> other stuff about the user goes here </p>
 
-<h2> Public Pictures </h2>
+
+<h2> Pictures </h2>
 <div class="pictures">
 <% @user.pictures.each do |p| %>
   <div class="picture">
@@ -17,10 +20,45 @@
   </div>
 <% end %>
 </div>
-
-<!--
-<% if current_user %>
-<%= link_to 'Edit', edit_user_profile_path %> |
-<%= link_to 'Back', user_profile_path %>
-<% end %>
--->
+</div>
+<div class="right">
+  
+  <div class="light-box clearfix">
+    <div class="icon">
+      <img src="/images/photo_icon.png"/>
+    </div>
+    <div class="stuff">
+    <div class="count">
+      23
+    </div>
+    <div class="what">
+      <a href="#">pictures</a>
+    </div>
+  </div>
+  </div>
+  
+  <div class="light-box clearfix">
+    <div class="icon">
+      <img src="/images/feedbacks.png"/>
+    </div>
+    <div class="stuff">
+    <div class="count">
+      291
+    </div>
+      <div class="what">
+        <a href="#">feedbacks</a>
+      </div>
+    </div>
+    </div>
+  </div>
+  
+  <h3 style="font-weight: normal"> Bio </h3>
+  <p>
+    This is a bio thin where the user puts crap in their fking bio and stuffs.
+  </p>
+  
+  <span class="help">
+    Joined July 2nd 1983
+  </span>
+  
+</div>

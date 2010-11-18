@@ -1,14 +1,19 @@
 body {
   font-family: "droid-sans-1", "droid-sans-2", Tahoma, Arial, sans-serif;
 
-  font-size: 14px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
   line-height: 18px;
   margin: 0;
   padding: 0;
+  
+  background: #EDEEED;
 }
 
 a {
   color: #0084D4;
+  color: #225AB6;
+  text-decoration: none;
 }
 
 a:hover {
@@ -24,9 +29,10 @@ h1, h2, h3, h4, h5, h6 {
 
 
 h1, h2 {
-  color: #0084D4;
+  //color: #0084D4;
   padding-bottom: 8px;
-  border-bottom: 1px solid #B9E2F5;
+  //border-bottom: 1px solid #B9E2F5;
+  font-weight: normal;
 }
 
 #header {
@@ -39,8 +45,11 @@ h1, h2 {
 }
 
 .container {
-  width: 1000px;
+  width: 800px;
   margin: 0 auto;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 #logo {
@@ -49,6 +58,7 @@ h1, h2 {
 }
 
 #logo a {
+  color: #333333;
   text-decoration: none;
 }
 
@@ -62,6 +72,7 @@ h1, h2 {
 }
 
 #nav a {
+  color: #333333;
   padding: 5px 10px;
   display: inline-block;
 }
@@ -111,6 +122,78 @@ h1, h2 {
 }
 
 #session-menu a:hover {
+}
+
+.boxed {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 1em rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0px 0px 1em rgba(0, 0, 0, .5);
+  box-shadow: 0px 0px 1em rgba(0, 0, 0, .5);
+  padding: 20px;
+}
+
+.light-box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: #F6F6F6;
+  margin-bottom: 10px;
+}
+
+.icon {
+  float: left;
+  padding-left: 10px;
+}
+
+.icon img {
+  height: 45px;
+  opacity: .1;
+}
+
+.stuff {
+  float: right;
+  text-align: right;
+  
+  height: 45px;
+  padding-top: 5px;
+  padding-right: 10px;
+}
+
+.count {
+}
+
+.what {
+}
+
+#profile {
+  margin-bottom: 2em;
+}
+
+#profile .avatar {
+  float: left;
+  margin-right: 15px;
+}
+
+#profile .username {
+  float: left;
+  font-weight: normal;
+  font-size: 32px;
+}
+
+.left {
+  float: left;
+  width: 70%;
+}
+
+.right {
+  float: left;
+  width: 30%;
+}
+
+#main-content {
+  background: white;
 }
 
 #main {
@@ -193,9 +276,9 @@ a.edit {
   font-weight: bold;
 }
 
-.field .help {
+.help {
   display: block;
-  color: #666;
+  color: #878787;
 }
 
 .picture-content {
