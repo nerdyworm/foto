@@ -91,5 +91,28 @@ describe PicturesController do
       assigns(:pictures).should include me
       assigns(:pictures).should_not include not_me
     end
+
+    describe "GET index/:user_id" do
+      before(:each) do
+        @user = Factory.create(:user)
+        @me = Factory.create(:picture, :private => false, :user => @user)
+      
+        get :index, {:user_id => @user.id}
+      end
+      
+      it "should only display pictures from that user" do
+        not_me = Factory.create(:picture, :private => false)
+
+        assigns(:pictures).should include @me
+        assigns(:pictures).should_not include not_me
+      end
+
+      it "should only display public images from taht user" do
+        not_me = Factory.create(:picture, :private => true, :user => @user)
+
+        assigns(:pictures).should include @me
+        assigns(:pictures).should_not include not_me
+      end
+    end
   end
 end

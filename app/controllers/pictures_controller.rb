@@ -4,7 +4,13 @@ class PicturesController < ApplicationController
   before_filter :authenticate_ownership!, :only   => [:edit, :update, :destroy]
  
   def index
-    @pictures = Picture.public.ordered.by_page(params[:page])
+    if params[:user_id]
+      @pictures = Picture.find_by_user_id(params[:user_id])
+    else
+      @pictures = Picture
+    end
+
+    @pictures = @pictures.public.ordered.by_page(params[:page])
   end
 
   def show

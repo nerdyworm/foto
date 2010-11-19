@@ -45,6 +45,22 @@ describe FeedbacksController do
 
       response.should be_redirect
     end
+
+
+    describe "get index" do
+      it "should be able to GET index" do
+        get :index
+        response.should be_success
+      end
+
+      it "should be able to GET users/:user_id/feedbacks" do
+        user = Factory.create(:user)
+        user.feedbacks << Factory.create(:feedback)
+
+        get :index, {:user_id => user.id}
+        assigns(:feedbacks).first.should == user.feedbacks.first
+      end
+    end
   end
 end
-
+ 

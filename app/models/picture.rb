@@ -11,6 +11,9 @@ class Picture
   field :voters,  :type => Array
   field :votes,   :type => Integer, :default => 0
 
+  field :views,   :type => Integer, :default => 0
+  field :viewers, :type => Array
+  
   mount_uploader :pic, PictureImageProcessor  
  
   #embeds_many :comments

@@ -12,6 +12,7 @@ Foto::Application.routes.draw do
   get "/users/:username" => "profiles#show",       :as => :username_profile
   resources :users do
     resources :pictures
+    resources :feedbacks
   end
   
   resources :pictures do
@@ -19,8 +20,9 @@ Foto::Application.routes.draw do
   end
 
   match "/pictures/tags/:tag" => "pictures#tags", :as => :tag
-  match "/feedbacks/:id/upvote"    => "feedbacks#upvote", :as => :feedback_upvote
-  match "/feedbacks/:id/downvote"  => "feedbacks#downvote", :as => :feedback_downvote
+  match "/feedbacks/"               => "feedbacks#index"
+  match "/feedbacks/:id/upvote"     => "feedbacks#upvote", :as => :feedback_upvote
+  match "/feedbacks/:id/downvote"   => "feedbacks#downvote", :as => :feedback_downvote
 
   root :to => "welcome#index"
 

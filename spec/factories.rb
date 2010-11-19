@@ -8,6 +8,8 @@ end
 Factory.define :picture do |f|
   f.name      "name"
   f.username  "username"
+  f.pic       File.new("#{Rails.root}/public/images/rails.png")
+  f.desc      "description"
 end
 
 Factory.define :feedback do |f|  

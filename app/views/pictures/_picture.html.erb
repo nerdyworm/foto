@@ -1,0 +1,29 @@
+<div class="picture clearfix">
+  <div class="thumb">
+    <%= link_to image_tag(picture.pic.thumb.url), picture %>
+  </div>
+  <div class="name">
+    <%= link_to picture.name, picture %>
+  </div>
+  <p class="description">
+    <% if picture.desc.empty? %>
+      <span style="font-style:italic">No description yet.</span>
+    <% else %>
+      <%= picture.desc %>
+    <% end %>
+  </p>
+  <p class="meta">
+    <span class="created">
+      <%= picture.created_at.to_s(:pretty) %>
+    </span>
+    <span class="views">
+      <%= picture.views %>
+    </span>
+    <span class="tags">
+      <% picture.tags.each do |t| %>
+        <%= link_to t, "/pictures/tags/#{t}", :class => "tag" %>
+      <% end if picture.tags %>
+    </span>
+  </p>
+</div>
+

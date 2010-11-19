@@ -172,14 +172,13 @@ h1, h2 {
 }
 
 #profile .avatar {
-  float: left;
   margin-right: 15px;
 }
 
 #profile .username {
-  float: left;
   font-weight: normal;
   font-size: 32px;
+  margin-bottom: 1em;
 }
 
 .left {
@@ -260,12 +259,43 @@ a.edit {
 }
 
 .pictures {
-
+  color: #878787;
 }
 
 .pictures .picture {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eceeec; 
+}
+
+.pictures .picture .thumb {
   float: left;
-  margin-right: 1em;
+  margin-right: 20px;
+}
+
+.pictures .picture .thumb img {
+  width: 140px;
+  height: 105px;
+}
+
+.pictures .picture .name {
+  margin-bottom: 10px;
+}
+
+.pictures .picture .name a {
+  font-size: 18px;
+}
+
+.pictures .picture .description {
+}
+
+.user-controls {
+  margin-top: 2em;
+}
+
+.user-controls a {
+  display: block;
+  padding: 5px 0px;
 }
 
 .field {

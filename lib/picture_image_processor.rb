@@ -3,7 +3,7 @@ class PictureImageProcessor < CarrierWave::Uploader::Base
   include CarrierWave::Compatibility::Paperclip
   
   version :thumb do  
-    process :resize_to_fill => [ 100, 100 ]  
+    process :resize_to_fill => [ 140, 105 ]  
   end
   
   version :medium do

@@ -1,26 +1,27 @@
 <div class="left">
-<div id="profile" class="clearfix">
-  <%= gravatar(@user.email, 175) %>
-  <div class="username">
-    <%= @user.username %>
+  
+  <div id="profile" class="clearfix">
+    <div style="float: left">
+      <%= gravatar(@user.email, 175) %>
+    </div>
+    <div style="float: left">
+      <div class="username">
+        <%= @user.username %>
+      </div>
+
+      <% if @user == current_user %>
+      <%= render "user_controls" %>
+      <% end %>
+    </div>
+  </div>
+
+  <h2> Recent Pictures </h2>
+  <div class="pictures">
+    <%= render @user.pictures.order_by(:created_at.desc).limit(5) %>
   </div>
 </div>
 
 
-<h2> Pictures </h2>
-<div class="pictures">
-<% @user.pictures.each do |p| %>
-  <div class="picture">
-    <div class="name">
-      <%= p.name %>
-    </div>
-    <div class="thumb">
-      <%= link_to image_tag(p.pic.thumb.url), p %>
-    </div>
-  </div>
-<% end %>
-</div>
-</div>
 <div class="right">
   
   <div class="light-box clearfix">
@@ -29,10 +30,10 @@
     </div>
     <div class="stuff">
     <div class="count">
-      23
+      <%= @user.pictures.count %>
     </div>
     <div class="what">
-      <a href="#">pictures</a>
+        <%= link_to "pictures", user_pictures_path(@user) %>
     </div>
   </div>
   </div>
@@ -43,22 +44,22 @@
     </div>
     <div class="stuff">
     <div class="count">
-      291
+      <%= @user.feedbacks.count %>
     </div>
-      <div class="what">
-        <a href="#">feedbacks</a>
+    <div class="what">
+      <%= link_to "feedbacks", user_feedbacks_path(@user) %>
       </div>
     </div>
     </div>
   </div>
   
   <h3 style="font-weight: normal"> Bio </h3>
-  <p>
-    This is a bio thin where the user puts crap in their fking bio and stuffs.
+  <p class="bio">
+    <%= @user.bio %>
   </p>
   
   <span class="help">
-    Joined July 2nd 1983
+    Joined <%= @user.created_at.to_s(:pretty) %>
   </span>
   
 </div>

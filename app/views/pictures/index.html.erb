@@ -1,28 +1,15 @@
-<h1>Latest pictures</h1>
-
-<div id="pictures">
-<% @pictures.each_with_index do |picture, i| %>
-  <div class="picture <%= cycle('first', 'second', 'third')%>">
-    <h2 class="name">
-      <%= picture.name %>
-      <% unless picture.username.nil? %>
-      <span class="username">
-        <%= link_to picture.username, username_profile_path(picture.username) %>
-      </span>
-      <% end %>
-    </h2>
-    <span class="image">
-    <% if picture.pic.medium.url %>
-      <%=link_to image_tag(picture.pic.medium.url), picture_path(picture) %>
-    <% end %>
-    </span>
-    <span class="tags">
-      <% picture.tags.each do |t| %>
-        <%= link_to t, "/pictures/tags/#{t}", :class => "tag" %>
-      <% end %>
-    </span>
-  </div>
+<% if params[:user_id].nil? %>
+  <h1>Latest pictures</h1>
+<% else %>
+  <% if @pictures.first %>
+    <h1><%= @pictures.first.user.username %>'s pictures</h1>
+  <% else %>
+    <h1> No more pictures found. </h1>
+  <% end %>
 <% end %>
+
+<div class="pictures">
+  <%= render @pictures %>
 </div>
 
 <br style="clear: both"/>

@@ -11,7 +11,8 @@ class Feedback
   field :votes,  :type => Integer, :default => 0
 
   referenced_in :picture
-
+  referenced_in :user
+  
   class << self
     def vote(feedback_id, user_id, direction)
       feedback_id = BSON::ObjectId(feedback_id) if feedback_id.class == String
