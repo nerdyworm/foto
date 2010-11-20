@@ -1,3 +1,27 @@
-<p class="comment">
-  <%= feedback.comment %>
-</p>
+<div class="feedback clearfix" id="feedback-<%=feedback.id%>">
+  
+  <div class="gutter">
+    <%= render :partial => '/pictures/votes', :locals => { :feedback => feedback } %>
+  </div>
+
+  <div class="feedback-content">
+
+    <div class="feedback-text">
+      <%= simple_format feedback.comment %>
+    </div>
+
+    <div class="feedback-footer">
+      <div class="feedback-user-info">
+        <a href="<%= username_profile_path(feedback.username) %>">
+          <div class="feedback-user-avatar">
+            <%= gravatar(feedback.email, 32) %>
+          </div>
+          <div class="feedback-user-username">
+            <%= link_to feedback.username, username_profile_path(feedback.username) %>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+

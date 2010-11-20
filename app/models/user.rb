@@ -10,7 +10,6 @@ class User
   field :admin, :type => Boolean, :default => false
   field :bio
   
-  embeds_one :profile
   references_many :pictures
   references_many :feedbacks
 

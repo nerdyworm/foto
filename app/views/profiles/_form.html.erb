@@ -1,17 +1,16 @@
-<%= form_for(@profile) do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+<%= form_for :user do |f| %>
 
-      <ul>
-      <% @profile.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="field">
+    Your avatar is hosted at <a href="http://gravatar.com">gravatar.com</a> just use the email addres you signed up with!
+  </div>
+
+  <div class="field">
+    <label for="bio">Biography</label><br/>
+    <%= f.text_area :bio %>
+  </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update profile" %>
   </div>
+
 <% end %>

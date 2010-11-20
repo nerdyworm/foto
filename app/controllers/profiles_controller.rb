@@ -12,13 +12,14 @@ class ProfilesController < ApplicationController
   end
  
   def edit
-    @profile = current_user.profile
+    @user = current_user
   end
 
   def update
-    @profile = current_user.profile
-    
-    if @profile.update_attributes(params[:profile])
+    @user = current_user
+    @user.bio = params[:user][:bio]
+
+    if @user.save
       redirect_to(:user_profile, :notice => 'Profile was successfully updated.') 
     else
       render :action => "edit" 

@@ -1,4 +1,4 @@
-<div class="votes"> 
+<div id="feedback-vote-<%= feedback.id %>" class="votes"> 
   <div class="up">
     <%= link_to "Good feedback", feedback_upvote_path(feedback), :remote => true, :class => "vote-up-feedback" %>
   </div>

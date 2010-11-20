@@ -183,12 +183,13 @@ h1, h2 {
 
 .left {
   float: left;
-  width: 70%;
+  width: 517px;
+  margin-right: 15px;
 }
 
 .right {
   float: left;
-  width: 30%;
+  width: 228px;
 }
 
 #main-content {
@@ -306,6 +307,10 @@ a.edit {
   font-weight: bold;
 }
 
+input[type=text], input[type=password], textarea {
+  border: 1px solid #ccc;
+}
+
 .help {
   display: block;
   color: #878787;
@@ -347,7 +352,8 @@ a.edit {
 
 .feedback {
   margin-bottom: 2em;
-  border-bottom: 1px dotted #B9E2F5;
+  border-bottom: 1px solid #B9E2F5;
+  border-bottom: 1px solid #eceeec;
 }
 
 .feedback-footer {

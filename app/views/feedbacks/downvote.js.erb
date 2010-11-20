@@ -1,1 +1,2 @@
-alert("hi");
+var count = $("#feedback-vote-<%= params[:id]%> .count").html();
+$("#feedback-vote-<%= params[:id]%> .count").html(parseInt(count) - 1);
