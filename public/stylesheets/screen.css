@@ -422,6 +422,13 @@ input[type=text], input[type=password], textarea {
   background: url(/images/vote-down.png);
 }
 
+#loading {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  background: url(/images/loading.gif);
+}
+
 /* float clearing for IE6 */
 * html .clearfix{
   height: 1%;

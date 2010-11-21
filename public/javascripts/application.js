@@ -12,6 +12,8 @@ $(document).ready(function() {
       if(page > last_page) {
         last_page = page;
         $.get("/pictures.js?page=" + page ); 
+
+        $(".pictures").append('<div id="loading"></div>');
       }
 
     }
