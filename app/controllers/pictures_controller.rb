@@ -3,7 +3,7 @@ class PicturesController < ApplicationController
   before_filter :find_picture_by_id,      :only   => [:show, :edit, :update, :destroy]
   before_filter :authenticate_ownership!, :only   => [:edit, :update, :destroy]
 
-  respond_to :html, :json
+  respond_to :html, :js
 
   def index
     if params[:user_id]
