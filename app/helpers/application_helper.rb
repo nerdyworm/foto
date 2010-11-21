@@ -4,5 +4,9 @@ module ApplicationHelper
     image_tag("http://www.gravatar.com/avatar/#{the_hash}?s=#{size}&d=mm", 
               {:alt => 'avatar', :class => 'avatar'})
   end
+
+  def admin?
+    current_user && current_user.admin?
+  end
 end
 

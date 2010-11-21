@@ -1,6 +1,8 @@
 Foto::Application.routes.draw do
 
 
+  resources :tags
+
   devise_for :users
   
   get "welcome/index"
@@ -20,7 +22,7 @@ Foto::Application.routes.draw do
     resources :feedbacks
   end
 
-  match "/pictures/tags/:tag" => "pictures#tags", :as => :tag
+  match "/pictures/tags/:tag"       => "pictures#tags", :as => :tagged_with
   match "/feedbacks/"               => "feedbacks#index"
   match "/feedbacks/:id/upvote"     => "feedbacks#upvote", :as => :feedback_upvote
   match "/feedbacks/:id/downvote"   => "feedbacks#downvote", :as => :feedback_downvote

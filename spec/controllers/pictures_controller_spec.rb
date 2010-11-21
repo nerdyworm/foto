@@ -85,7 +85,7 @@ describe PicturesController do
 
     it "should not show private when seraching by tag" do
       me =     Factory.create(:picture, :private => false, :tags => ["me"])
-      not_me = Factory.create(:picture, :private => false, :tags => ["not me"])
+      not_me = Factory.create(:picture, :private => true, :tags => ["me"])
 
       get :tags, :tag => "me"
       assigns(:pictures).should include me

@@ -5,7 +5,8 @@ class Picture
   field :desc
   field :name
   field :username
-  field :tags,    :type => Array
+
+  field :tags,    :type => Array,   :default => []
   field :private, :type => Boolean, :default => false
  
   field :voters,  :type => Array
@@ -16,7 +17,7 @@ class Picture
   
   mount_uploader :pic, PictureImageProcessor  
  
-  #embeds_many :comments
+  # references_many :tags,      :stored_as => :array
   references_many :feedbacks
 
   referenced_in :user
@@ -62,10 +63,16 @@ class Picture
     def upvote(story_id, user_id)
       self.vote(story_id, user_id, 1)
     end
+
+    def remove_tag(tag)
+      collection.update(
+        { 'tags'  => { '$in'  => [tag] }},
+        { '$pull' => { 'tags' =>  tag  }}, {:multi => true})
+    end
   end
 
   def tags_s 
-    self.tags.join(", ") if self.tags
+    self.tags.map(&:name).join(", ") if self.tags
   end
 
   def tags_s=(ts)

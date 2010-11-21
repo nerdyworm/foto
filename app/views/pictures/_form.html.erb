@@ -22,8 +22,10 @@
   </div>
   <div class="field">
     <%= f.label :tags %><br />
-    <%= f.text_field :tags_s %>
-    <span class="help"> Seperate tags with a comma e.g. tag1, tag2 </span>
+    <% Tag.all.each do |tag| %>
+      <%= check_box_tag "picture[tags][]", tag.id, @picture.tags.include?(tag.name) %> 
+      <%= tag.name %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :desc %><br />

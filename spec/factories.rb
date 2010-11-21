@@ -17,3 +17,7 @@ Factory.define :feedback do |f|
   f.comment   "This is a comment"
   f.username  "username"
 end
+
+Factory.define :tag do |f|
+  f.name "tag"
+end

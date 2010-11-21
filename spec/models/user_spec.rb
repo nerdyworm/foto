@@ -9,13 +9,6 @@ describe User do
   end
   
   describe "Relations" do
-    describe "profile" do
-      it "should have a profile" do
-        user = User.new
-        user.should respond_to :profile
-      end      
-    end
-    
     describe "pictures" do
       it "should have many pictures" do
         user = User.new

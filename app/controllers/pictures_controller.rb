@@ -2,7 +2,9 @@ class PicturesController < ApplicationController
   before_filter :authenticate_user!,      :except => [:show, :index, :tags]
   before_filter :find_picture_by_id,      :only   => [:show, :edit, :update, :destroy]
   before_filter :authenticate_ownership!, :only   => [:edit, :update, :destroy]
- 
+
+  respond_to :html, :json
+
   def index
     if params[:user_id]
       @pictures = Picture.find_by_user_id(params[:user_id])
@@ -11,6 +13,8 @@ class PicturesController < ApplicationController
     end
 
     @pictures = @pictures.public.ordered.by_page(params[:page])
+
+    respond_with(@pictures)
   end
 
   def show
@@ -19,18 +23,13 @@ class PicturesController < ApplicationController
              :file    => "#{Rails.root}/public/404.html",
              :status  => 404 and return
     end
-
   end
   
   def tags
+    @pictures = []
     if params[:tag]
-      #@pictures = Picture.joins(:tags).public.where(
-      #  :tags => {:name => params[:tag]}).paginate(params[:page]).includes(:tags, :user)
-      #.public.ordered.by_page(params[:page])
-      @pictures = Picture.where(:tags.in => [params[:tag]])
+      @pictures = Picture.public.ordered.where(:tags.in => [params[:tag]])
     end
-
-    @pictures ||=[]
 
     render :index
   end

@@ -17,25 +17,27 @@ describe Picture do
       it "should respond to tags" do
         Picture.new.should respond_to :tags
       end
-
-      it "should do things with tags_s" do
-        picture = Factory.create(:picture, :tags_s => "cookies, cakes")
-
-        picture.tags.should include "cakes"
-        picture.tags.should include "cookies"
-      end
-
-      it "should only create one tag" do
+      
+      it "should take a list of tags" do
         picture = Factory.create(:picture)
-        picture.tags_s = "cookies, cookies"
-        picture.tags.size.should == 1
+
+        picture.tags = ["one", "two"]
+
+        picture.tags.should include "one"
+        picture.tags.should include "two"
       end
 
-      it "should clear exisiting tags when setting with tags_s" do
-        picture = Factory.create(:picture, :tags_s => "cookies")
-        picture.tags_s = ""
+      it "should remove tags from all pictures" do
+        picture = Factory.create(:picture, :tags => ["remove", "tag"])
+        picture2= Factory.create(:picture, :tags => ["remove", "tag"])
 
-        picture.tags.should_not include "cookies"
+        Picture.remove_tag("remove")
+
+        picture.reload
+        picture2.reload
+
+        picture.tags.should_not include "remove"
+        picture2.tags.should_not include "remove"
       end
     end
   end
